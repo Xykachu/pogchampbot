@@ -82,6 +82,8 @@ client.on('message',async(msg)=>{
     }
     
 });
+
+//triggers on ree
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
@@ -93,7 +95,27 @@ client.on('message',async(msg)=>{
     
 });
 
+//deletes message after 5 seconds
+client.on('message', async message => {
+	if (message.content === `${prefix}kyle`) {
+		try {
+			const sentMessage = await message.channel.send('fuck you kyle');
+			await sentMessage.delete({ timeout: 5000 });
+		} catch (error) {
+			// handle error
+		}
+	}
+});
 
+//slap comman
+client.on('message', async msg => {
+    const taggedUser = msg.mentions.users.first();
+	if (msg.content.startsWith(`${prefix}slap`) ) {
+		
+msg.reply(`slaps ${taggedUser.username} ..`)
+	msg.channel.send(`https://tenor.com/view/pikachu-slap-fight-mad-no-gif-16415016 `);
+	}
+});
 
 //login token
 client.login(token);
