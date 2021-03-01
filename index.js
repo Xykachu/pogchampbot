@@ -12,11 +12,11 @@ client.on('ready', ()=>{
 client.on('message', async (msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id; //checks if users match
-    if(msg.content === `${prefix}pogchamp`){ //command
+    if(msg.content.toLowerCase() === `${prefix}pogchamp`){ //command
         msg.channel.send('how are you today? ' + msg.author.username); // response to command
         msg.channel.send('1 very pogchamp ,2 kinda pogchamp ,3 pogish ,4 not very pog ,5 unpogchamp ,6 need pat');
         
-        msg.channel.awaitMessages(filter,{max:1, time:5000, errors:['time']}) //waits for message for 5 seconds, only 1 message allowed
+        msg.channel.awaitMessages(filter,{max:1, time:10000, errors:['time']}) //waits for message for 10 seconds, only 1 message allowed
         .then((collected)=>{
             const ResponseMsg = collected.first(); // looks at first reply 
             console.log(ResponseMsg.content); //logs content of the message it read
@@ -33,7 +33,8 @@ client.on('message', async (msg)=>{
                 msg.channel.send('4 - not very pog.. not good..whats wrong buddy? :c');
             }
             else if(ResponseMsg.content==="5"){
-                msg.channel.send('5 - unpogchamp im sorry fren :c hope ur okay! https://tenor.com/view/big-hero6-baymax-feel-better-hug-hugging-gif-4782499');
+                msg.channel.send('5 - unpogchamp im sorry fren :c hope ur okay! ');
+                msg.channel.send("https://tenor.com/view/big-hero6-baymax-feel-better-hug-hugging-gif-4782499")
             }
             else if(ResponseMsg.content==="6"){
                 const responses = ["https://tenor.com/view/funny-dog-cat-patting-head-gif-4953911", 
@@ -43,9 +44,14 @@ client.on('message', async (msg)=>{
                 msg.channel.send('6 - need a pat...');
                 msg.channel.send(responses[Math.floor(Math.random() * responses.length)]); //random
             }
+            else {
+                msg.channel.send("that wasnt an option.. *panic*")
+                msg.channel.send("https://tenor.com/view/spongebob-panicking-panic-run-stressed-gif-5303378");
+            }
             
         })
-        .catch((err)=>console.log(err));   
+        .catch((err)=>console.log(err)
+        );   
     }
     
 });
@@ -54,7 +60,7 @@ client.on('message', async (msg)=>{
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
-    if(msg.content === `${prefix}pat`){
+    if(msg.content.toLowerCase() === `${prefix}pat`){
         const responses = [
             "https://tenor.com/view/funny-dog-cat-patting-head-gif-4953911", 
             "https://tenor.com/view/pat-good-boy-gif-7220650", 
@@ -64,6 +70,25 @@ client.on('message',async(msg)=>{
             "https://tenor.com/view/bunny-cute-head-pat-pet-kitty-gif-15162393"
         ];
             msg.channel.send(responses[Math.floor(Math.random() * responses.length)]); //random gif response
+    }
+    
+});
+client.on('message',async(msg)=>{
+    if(msg.author.bot)return;
+    const filter = (m) => m.author.id === msg.author.id;
+    if(msg.content.toLowerCase() === `${prefix}commands`){
+        
+            msg.channel.send("Available commands are : Pat, Pogchamp");
+    }
+    
+});
+client.on('message',async(msg)=>{
+    if(msg.author.bot)return;
+    const filter = (m) => m.author.id === msg.author.id;
+    if(msg.content.toLowerCase() === `ree`){
+        
+            msg.channel.send("REE! " +msg.author.username);
+            msg.channel.send("https://tenor.com/view/ree-pepe-triggered-angry-ahhhh-gif-13627544");
     }
     
 });
