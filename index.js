@@ -1,12 +1,17 @@
 const Discord= require('discord.js');
+const { CLIENT_RENEG_LIMIT } = require('tls');
 const client = new Discord.Client();
 const token ="ODE1OTcxNTA4NzM5NjM3MjU4.YD0Krw.KZBVMuRb1yAnRubNDDhgH6Z0NhM";
 const prefix ="!"
 
-client.on('ready', ()=>{
-    console.log(`logged in as ${client.user.tag}!`);
-});
 
+client.on("ready", () =>{
+    console.log(`Logged in as ${client.user.tag}!`);
+   client.user.setActivity('Pogchamp!!', { type: 'PLAYING' });
+   client.user.setStatus("idle");
+ });
+//login token
+client.login(token);
 
 //pogchamp command
 client.on('message', async (msg)=>{
@@ -21,19 +26,19 @@ client.on('message', async (msg)=>{
             const ResponseMsg = collected.first(); // looks at first reply 
             console.log(ResponseMsg.content); //logs content of the message it read
             if(ResponseMsg.content==="1"){
-                msg.channel.send('1 - very pogchamp.. good.. im happy to hear that friend');
+                msg.channel.send('1 - very pogchamp.. Thats good!');
             }
             else if(ResponseMsg.content==="2"){
-                msg.channel.send('2 - kinda pogchamp.. #fine.. this is an acceptable answer, wish u were better tho D:');
+                msg.channel.send('2 - kinda pogchamp.. thats not so good..');
             }
             else if(ResponseMsg.content==="3"){
-                msg.channel.send('3 - pogish.. ohno..is something bothering you friend?');
+                msg.channel.send('3 - pogish.. ohno..its getting worse');
             }
             else if(ResponseMsg.content==="4"){
-                msg.channel.send('4 - not very pog.. not good..whats wrong buddy? :c');
+                msg.channel.send('4 - not very pog.. oh fuck go back ');
             }
             else if(ResponseMsg.content==="5"){
-                msg.channel.send('5 - unpogchamp im sorry fren :c hope ur okay! ');
+                msg.channel.send('5 - unpogchamp Ooh frick thats very bad ');
                 msg.channel.send("https://tenor.com/view/big-hero6-baymax-feel-better-hug-hugging-gif-4782499")
             }
             else if(ResponseMsg.content==="6"){
@@ -60,7 +65,8 @@ client.on('message', async (msg)=>{
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
-    if(msg.content.toLowerCase() === `${prefix}pat`){
+    const taggedUser = msg.mentions.users.first();
+    if(msg.content.startsWith(`${prefix}pat`) ){
         const responses = [
             "https://tenor.com/view/funny-dog-cat-patting-head-gif-4953911", 
             "https://tenor.com/view/pat-good-boy-gif-7220650", 
@@ -69,16 +75,20 @@ client.on('message',async(msg)=>{
             "https://tenor.com/view/mala-mishra-jha-pat-head-cute-sparkle-penguin-gif-16770818",
             "https://tenor.com/view/bunny-cute-head-pat-pet-kitty-gif-15162393"
         ];
+
+            msg.reply(`pats ${taggedUser.username} ..`)
             msg.channel.send(responses[Math.floor(Math.random() * responses.length)]); //random gif response
     }
     
 });
+
+//commands
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
     if(msg.content.toLowerCase() === `${prefix}commands`){
         
-            msg.channel.send("Available commands are : Pat, Pogchamp");
+            msg.channel.send("Available commands are : Pat, Pogchamp,ree,kyle,slap,pun");
     }
     
 });
@@ -96,10 +106,10 @@ client.on('message',async(msg)=>{
 });
 
 //deletes message after 5 seconds
-client.on('message', async message => {
-	if (message.content === `${prefix}kyle`) {
+client.on('message', async msg => {
+	if (msg.content === `${prefix}kyle`) {
 		try {
-			const sentMessage = await message.channel.send('fuck you kyle');
+			const sentMessage = await msg.channel.send('fuck you kyle');
 			await sentMessage.delete({ timeout: 5000 });
 		} catch (error) {
 			// handle error
@@ -117,5 +127,45 @@ msg.reply(`slaps ${taggedUser.username} ..`)
 	}
 });
 
-//login token
-client.login(token);
+//pun
+client.on('message',async(msg)=>{
+    if(msg.author.bot)return;
+    const filter = (m) => m.author.id === msg.author.id;
+    const taggedUser = msg.mentions.users.first();
+    if(msg.content.startsWith(`${prefix}pun`) ){
+        const responses = [
+            "Don't spell part backwards. It's a trap.", 
+            "Thanks for explaining the word many to me, it means a lot.", 
+            "What did the grape say when it got crushed? Nothing, it just let out a little wine.",
+            "I don’t trust stairs because they’re always up to something.",
+            "Why was Dumbo sad? He felt irrelephant.",
+            "I was wondering why the ball was getting bigger. Then it hit me.",
+            "I made a pun about the wind but it blows.",
+            "A cross-eyed teacher couldn’t control his pupils.",
+            "England doesn’t have a kidney bank, but it does have a Liverpool.",
+            "How does Moses make coffee? Hebrews it.",
+            "How did the picture end up in jail? It was framed!",
+            "What did the sushi say to the bee? Wasabee!",
+            "One lung said to another, “we be-lung together!”",
+            "What did the buffalo say to his son? Bison.",
+            "I hate how funerals are always at 9 a.m. I’m not really a mourning person.",
+            "There was a kidnapping at school yesterday. Don’t worry, though – he woke up!",
+            "I wasn’t originally going to get a brain transplant, but then I changed my mind.",
+            "What do you call the wife of a hippie? A Mississippi.",
+            "Never discuss infinity with a mathematician, they can go on about it forever.",
+            "Never trust an atom, they make up everything",
+            "To the guy who invented zero, thanks for nothing.",
+            "I once ate a dictionary, it gave me thesaurus throat I've ever had.",
+            "I have a fear of elevators, I'm taking steps to avoid them",
+            "I know a lot of jokes about retired people but none of them work.",
+            "Sundays are always a little sad but, the day before is a sadder day.",
+            "This graveyard looks overcrowded. People must be dying to get in there.",
+            "What do you call a Mexican who has lost his car? Carlos",
+            "What do you call someone with no body and no nose? Nobody knows"
+        ];
+
+            msg.reply(responses[Math.floor(Math.random() * responses.length)]);
+    }
+    
+});
+
