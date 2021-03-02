@@ -109,17 +109,20 @@ client.on('message',async(msg)=>{
     const filter = (m) => m.author.id === msg.author.id;
     const taggedUser = msg.mentions.users.first();
     if(msg.content.toLowerCase().startsWith(`${prefix}pat`) ){
-        const responses = [
-            "https://tenor.com/view/funny-dog-cat-patting-head-gif-4953911", 
-            "https://tenor.com/view/pat-good-boy-gif-7220650", 
-            "https://tenor.com/view/ao-haru-ride-anime-boy-anime-girl-anime-couple-couple-gif-13576017",
-            "https://tenor.com/view/cat-duck-pat-head-cute-gif-17539471",
-            "https://tenor.com/view/mala-mishra-jha-pat-head-cute-sparkle-penguin-gif-16770818",
-            "https://tenor.com/view/bunny-cute-head-pat-pet-kitty-gif-15162393"
-        ];
+        const responses = ["https://media.tenor.com/images/5b3c8ea690356c8566cebcae8fa13b9c/tenor.gif", 
+            "https://media1.tenor.com/images/153e9bdd80008e8c0f94110450fcbf98/tenor.gif?itemid=10534102", 
+            "https://i.pinimg.com/originals/2e/27/d5/2e27d5d124bc2a62ddeb5dc9e7a73dd8.gif",
+            "https://media.tenor.com/images/86fee4add43f1910ee89a7f1c75e5679/tenor.gif",
+        "https://media.tenor.com/images/1da6bb86ef23dc4dff5051209843a296/tenor.gif",
+    "https://66.media.tumblr.com/d743a5e5ecc65be5cb6ac8de7978fb22/tumblr_pfyit1ofSu1th206io1_500.gif"];
+        const embed = new Discord.MessageEmbed()
+                .setColor('#ec8fcc')
+                .setTitle(`pats ${taggedUser.username} ..`)
+                .setImage(url=`${responses[Math.floor(Math.random() * responses.length)]}`)
+                msg.channel.send(embed);
 
-            msg.reply(`pats ${taggedUser.username} ..`)
-            msg.channel.send(responses[Math.floor(Math.random() * responses.length)]); //random gif response
+            //msg.reply(`pats ${taggedUser.username} ..`)
+           // msg.channel.send(responses[Math.floor(Math.random() * responses.length)]); //random gif response
     }
     
 });
@@ -168,17 +171,22 @@ client.on('message', async msg => {
 client.on('message', async msg => {
     const taggedUser = msg.mentions.users.first();
     const responses = [
-        "https://tenor.com/view/baka-slap-huh-angry-gif-15696850", 
-        "https://tenor.com/view/pikachu-slap-fight-mad-no-gif-16415016", 
-        "https://tenor.com/view/cat-punch-stuffed-toy-gif-16184358",
-        "https://tenor.com/view/family-guy-brian-griffin-stewie-griffin-slap-push-gif-4590339",
-        "https://tenor.com/view/slap-gif-19326818",
-        "https://tenor.com/view/slap-handa-seishuu-naru-kotoishi-barakamon-anime-barakamon-gif-5509136"
+        "https://media.tenor.com/images/9e7a8a7473f6535081805f0e85b7a09f/tenor.gif", 
+        "http://cdn.lowgif.com/full/a58d2aa5d2cb3809-.gif", 
+        "https://media.tenor.com/images/47698b115e4185036e95111f81baab45/tenor.gif",
+        "https://i.gifer.com/nK.gif",
+        "https://thumbs.gfycat.com/CriminalLazyAmericanavocet-size_restricted.gif",
+        "https://www.slapapokemon.com/4.gif"
     ];
 	if (msg.content.toLowerCase().startsWith(`${prefix}slap`) ) {
+        const embed = new Discord.MessageEmbed()
+                .setColor('#6cf0df')
+                .setTitle(`slaps ${taggedUser.username} ..`)
+                .setImage(url=`${responses[Math.floor(Math.random() * responses.length)]}`)
+                msg.channel.send(embed);
 		
-msg.reply(`slaps ${taggedUser.username} ..`)
-msg.channel.send(responses[Math.floor(Math.random() * responses.length)]);
+//msg.reply(`slaps ${taggedUser.username} ..`)
+//msg.channel.send(responses[Math.floor(Math.random() * responses.length)]);
 	}
 });
 
