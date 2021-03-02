@@ -96,7 +96,7 @@ client.on('message',async(msg)=>{
     const filter = (m) => m.author.id === msg.author.id;
     if(msg.content.toLowerCase() === `${prefix}commands`){
         
-            msg.channel.send("Available commands are : Pat, Pogchamp,ree,kyle,slap,pun");
+            msg.channel.send("Available commands are : Pat, Pogchamp, ree, kyle, slap, pun, rps, blasty, pog");
     }
     
 });
@@ -212,7 +212,65 @@ client.on('message',async msg=>{
 });
 
 
+//----------------------------------------------------------------------------
+//ROCK-PAPER-SCISSORS
 
+client.on('message', async (msg)=>{
+    if(msg.author.bot)return;
+    const RAND=["rock","paper","scissors"];
+    randomR = RAND[Math.floor(Math.random() * RAND.length)];
+    const filter = (m) => m.author.id === msg.author.id; //checks if users match
+    if(msg.content.toLowerCase() === `${prefix}rps`){ //command
+        msg.reply("rock paper or scissors? "); // response to command
+        msg.channel.awaitMessages(filter,{max:1, time:10000, errors:['time']}) //waits for message for 10 seconds, only 1 message allowed
+        .then((collected)=>{
+            const ResponseMsg = collected.first(); // looks at first reply 
+            console.log(ResponseMsg.content); //logs content of the message it read
 
-
-
+            if((ResponseMsg.content.toLowerCase() === "rock") &&(randomR.toLowerCase() === "rock") ){
+                msg.channel.send(`i choose.. ${randomR} its a draw..`);
+                console.log(randomR);
+            }
+            else if((ResponseMsg.content.toLowerCase() === "rock")  &&(randomR.toLowerCase() === "paper") ){
+                msg.channel.send(`i choose..${randomR} you lose..`);
+                console.log(randomR);
+            }
+            else if((ResponseMsg.content.toLowerCase() === "rock")  &&(randomR.toLowerCase() === "scissors") ){
+                msg.channel.send(`i choose..${randomR} you win!`);
+                console.log(randomR);
+            }
+            else if((ResponseMsg.content.toLowerCase() === "paper") &&(randomR.toLowerCase() === "paper")){
+                msg.channel.send(`i choose..${randomR} its a draw..`);
+                console.log(randomR);
+            }
+            else if((ResponseMsg.content.toLowerCase() === "paper") &&(randomR.toLowerCase() === "rock") ){
+                msg.channel.send(`i choose..${randomR} you win!`);
+                console.log(randomR);
+            }
+            else if((ResponseMsg.content.toLowerCase() === "paper")  &&(randomR.toLowerCase() === "scissors") ){
+                msg.channel.send(`i choose..${randomR} you lose..`);
+                console.log(randomR);
+            }
+            else if((ResponseMsg.content.toLowerCase() === "scissors")  &&(randomR.toLowerCase() === "scissors") ){
+                msg.channel.send(`i choose..${randomR} its a draw..`);
+                console.log(randomR);
+            }
+            else if((ResponseMsg.content.toLowerCase() === "scissors")  &&(randomR.toLowerCase() === "paper") ){
+                msg.channel.send(`i choose..${randomR} you win!`);
+                console.log(randomR);
+            }
+            else if((ResponseMsg.content.toLowerCase() === "scissors")  &&(randomR.toLowerCase() === "rock") ){
+                msg.channel.send(`i choose..${randomR} you lose..`);
+                console.log(randomR);
+            }
+            else {
+                msg.channel.send("that wasnt an option, idiot");
+                console.log(randomR);
+            }
+  
+        })
+        .catch((err)=>console.log(err)
+        );   
+    }
+    
+});
