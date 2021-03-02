@@ -1,8 +1,9 @@
+const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
 const Discord= require('discord.js');
 const { CLIENT_RENEG_LIMIT } = require('tls');
 const client = new Discord.Client();
 const token ="ODE1OTcxNTA4NzM5NjM3MjU4.YD0Krw.KZBVMuRb1yAnRubNDDhgH6Z0NhM";
-const prefix ="!"
+const prefix =">"
 
 
 client.on("ready", () =>{
@@ -12,14 +13,16 @@ client.on("ready", () =>{
  });
 //login token
 client.login(token);
+const det = "```1 very pogchamp ,2 kinda pogchamp ,3 pogish ,4 not very pog ,5 unpogchamp ,6 need pat```";
 
+//----------------------------------------------------------------------------------------------------------------------------
 //pogchamp command
 client.on('message', async (msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id; //checks if users match
     if(msg.content.toLowerCase() === `${prefix}pogchamp`){ //command
-        msg.channel.send('how are you today? ' + msg.author.username); // response to command
-        msg.channel.send('1 very pogchamp ,2 kinda pogchamp ,3 pogish ,4 not very pog ,5 unpogchamp ,6 need pat');
+        msg.channel.send("how are you today?" + msg.author.username); // response to command
+        msg.channel.send(det);
         
         msg.channel.awaitMessages(filter,{max:1, time:10000, errors:['time']}) //waits for message for 10 seconds, only 1 message allowed
         .then((collected)=>{
@@ -27,15 +30,20 @@ client.on('message', async (msg)=>{
             console.log(ResponseMsg.content); //logs content of the message it read
             if(ResponseMsg.content==="1"){
                 msg.channel.send('1 - very pogchamp.. Thats good!');
+                msg.channel.send('https://tenor.com/view/spongebob-squarepants-dance-happy-dance-%E6%AD%A1%E5%BF%AB-gif-5084836')
             }
             else if(ResponseMsg.content==="2"){
                 msg.channel.send('2 - kinda pogchamp.. thats not so good..');
+                msg.channel.send("https://tenor.com/view/sad-hangry-grumpy-upset-fake-smile-gif-11970365")
             }
             else if(ResponseMsg.content==="3"){
                 msg.channel.send('3 - pogish.. ohno..its getting worse');
+                msg.channel.send("https://tenor.com/view/embarrassed-sad-cry-smile-interview-gif-4461765")
+
             }
             else if(ResponseMsg.content==="4"){
                 msg.channel.send('4 - not very pog.. oh fuck go back ');
+                msg.channel.send("https://tenor.com/view/icecream-gif-4502495")
             }
             else if(ResponseMsg.content==="5"){
                 msg.channel.send('5 - unpogchamp Ooh frick thats very bad ');
@@ -60,13 +68,13 @@ client.on('message', async (msg)=>{
     }
     
 });
-
+//----------------------------------------------------------------------------------------------------------------------------
 //pat command
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
     const taggedUser = msg.mentions.users.first();
-    if(msg.content.startsWith(`${prefix}pat`) ){
+    if(msg.content.toLowerCase().startsWith(`${prefix}pat`) ){
         const responses = [
             "https://tenor.com/view/funny-dog-cat-patting-head-gif-4953911", 
             "https://tenor.com/view/pat-good-boy-gif-7220650", 
@@ -81,7 +89,7 @@ client.on('message',async(msg)=>{
     }
     
 });
-
+//----------------------------------------------------------------------------------------------------------------------------
 //commands
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
@@ -92,7 +100,7 @@ client.on('message',async(msg)=>{
     }
     
 });
-
+//----------------------------------------------------------------------------------------------------------------------------
 //triggers on ree
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
@@ -104,10 +112,10 @@ client.on('message',async(msg)=>{
     }
     
 });
-
+//----------------------------------------------------------------------------------------------------------------------------
 //deletes message after 5 seconds
 client.on('message', async msg => {
-	if (msg.content === `${prefix}kyle`) {
+	if (msg.content.toLowerCase() === `${prefix}kyle`) {
 		try {
 			const sentMessage = await msg.channel.send('fuck you kyle');
 			await sentMessage.delete({ timeout: 5000 });
@@ -117,22 +125,23 @@ client.on('message', async msg => {
 	}
 });
 
-//slap comman
+//slap command
 client.on('message', async msg => {
     const taggedUser = msg.mentions.users.first();
-	if (msg.content.startsWith(`${prefix}slap`) ) {
+	if (msg.content.toLowerCase().startsWith(`${prefix}slap`) ) {
 		
 msg.reply(`slaps ${taggedUser.username} ..`)
 	msg.channel.send(`https://tenor.com/view/pikachu-slap-fight-mad-no-gif-16415016 `);
 	}
 });
 
+//----------------------------------------------------------------------------------------------------------------------------
 //pun
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
     const taggedUser = msg.mentions.users.first();
-    if(msg.content.startsWith(`${prefix}pun`) ){
+    if(msg.content.toLowerCase().startsWith(`${prefix}pun`) ){
         const responses = [
             "Don't spell part backwards. It's a trap.", 
             "Thanks for explaining the word many to me, it means a lot.", 
@@ -168,4 +177,33 @@ client.on('message',async(msg)=>{
     }
     
 });
+
+//----------------------------------------------------------------------------------------------------------------------------
+//blasty
+client.on('message',async msg=>{
+    const taggedUser =msg.mentions.users.first();
+    
+    if(msg.content.toLowerCase().startsWith(`${prefix}blasty`)){
+        const responses=[
+            "cool blasty https://tenor.com/view/deal-with-it-squirtle-pokemon-gif-6166819",
+            "creepy fucker https://tenor.com/view/pokemon-excited-happy-squirtle-hihihi-gif-7937582",
+            "happy blasty! https://tenor.com/view/squirtle-smile-happy-pokemon-gif-17472918",
+            "angwy fucker https://tenor.com/view/pokemon-squirtle-clone-fight-fighting-gif-7863630",
+            "cute blasty https://tenor.com/view/woaaaa-gif-10841239"
+]
+        msg.reply(responses[Math.floor(Math.random() * responses.length)]);
+    }
+});
+
+//----------------------------------------------------------------------------------------------------------------------------
+//...the pog to my champ
+client.on('message',async msg=>{
+    if(msg.content.toLowerCase().startsWith(`${prefix}pog`)){
+        msg.channel.send("champ");
+    }
+});
+
+
+
+
 
