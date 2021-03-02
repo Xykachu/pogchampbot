@@ -35,37 +35,65 @@ client.on('message', async (msg)=>{
             const ResponseMsg = collected.first(); // looks at first reply 
             console.log(ResponseMsg.content); //logs content of the message it read
             if(ResponseMsg.content==="1"){
-                msg.channel.send('1 - very pogchamp.. Thats good!');
-                msg.channel.send('https://tenor.com/view/spongebob-squarepants-dance-happy-dance-%E6%AD%A1%E5%BF%AB-gif-5084836')
+
+            const embed = new Discord.MessageEmbed()
+            .setColor('#63ff00')
+            .setTitle('1 - very pogchamp.. Thats good!')
+            .setImage(url="https://media4.giphy.com/media/nDSlfqf0gn5g4/giphy.gif")
+            msg.channel.send(embed);
+
             }
             else if(ResponseMsg.content==="2"){
-                msg.channel.send('2 - kinda pogchamp.. thats not so good..');
-                msg.channel.send("https://tenor.com/view/sad-hangry-grumpy-upset-fake-smile-gif-11970365")
+
+                const embed = new Discord.MessageEmbed()
+            .setColor('#99c129')
+            .setTitle('2 - kinda pogchamp.. thats still kinda good..')
+            .setImage(url="https://i.gifer.com/HTBx.gif")
+            msg.channel.send(embed);
+                
             }
             else if(ResponseMsg.content==="3"){
-                msg.channel.send('3 - pogish.. ohno..its getting worse');
-                msg.channel.send("https://tenor.com/view/embarrassed-sad-cry-smile-interview-gif-4461765")
+                const embed = new Discord.MessageEmbed()
+                .setColor('#ffff00')
+                .setTitle('3 - pogish.. ohno..its getting worse')
+                .setImage(url="https://media4.giphy.com/media/6Q3M4BIK0lX44/giphy.gif")
+                msg.channel.send(embed);
+                
 
             }
             else if(ResponseMsg.content==="4"){
-                msg.channel.send('4 - not very pog.. oh fuck go back ');
-                msg.channel.send("https://tenor.com/view/icecream-gif-4502495")
+                const embed = new Discord.MessageEmbed()
+                .setColor('#FFA500')
+                .setTitle('4 - not very pog.. oh fuck go back ')
+                .setImage(url="https://media3.giphy.com/media/fxZeSkds6bcWGlgevx/giphy.gif")
+                msg.channel.send(embed);
             }
             else if(ResponseMsg.content==="5"){
-                msg.channel.send('5 - unpogchamp Ooh frick thats very bad ');
-                msg.channel.send("https://tenor.com/view/big-hero6-baymax-feel-better-hug-hugging-gif-4782499")
+                const embed = new Discord.MessageEmbed()
+                .setColor('#d0340d')
+                .setTitle('5 - unpogchamp Ooh frick thats very bad ')
+                .setImage(url="https://media4.giphy.com/media/Lb3vIJjaSIQWA/source.gif")
+                msg.channel.send(embed);
             }
             else if(ResponseMsg.content==="6"){
-                const responses = ["https://tenor.com/view/funny-dog-cat-patting-head-gif-4953911", 
-            "https://tenor.com/view/pat-good-boy-gif-7220650", 
-            "https://tenor.com/view/ao-haru-ride-anime-boy-anime-girl-anime-couple-couple-gif-13576017",
-            "https://tenor.com/view/cat-duck-pat-head-cute-gif-17539471"];
-                msg.channel.send('6 - need a pat...');
-                msg.channel.send(responses[Math.floor(Math.random() * responses.length)]); //random
+                
+                const responses = ["https://media.tenor.com/images/5b3c8ea690356c8566cebcae8fa13b9c/tenor.gif", 
+            "https://media1.tenor.com/images/153e9bdd80008e8c0f94110450fcbf98/tenor.gif?itemid=10534102", 
+            "https://i.pinimg.com/originals/2e/27/d5/2e27d5d124bc2a62ddeb5dc9e7a73dd8.gif",
+            "https://media.tenor.com/images/86fee4add43f1910ee89a7f1c75e5679/tenor.gif"];
+            const embed = new Discord.MessageEmbed()
+                .setColor('#c12929')
+                .setTitle('6 - need a pat...')
+                .setImage(url=`${responses[Math.floor(Math.random() * responses.length)]}`)
+                msg.channel.send(embed);
+               
             }
             else {
-                msg.channel.send("that wasnt an option.. *panic*")
-                msg.channel.send("https://tenor.com/view/spongebob-panicking-panic-run-stressed-gif-5303378");
+                const embed = new Discord.MessageEmbed()
+                .setColor('#d0340d')
+                .setTitle('that wasnt an option... *panic*')
+                .setImage(url="https://media1.giphy.com/media/l2Jek280UzMXLDfAQ/giphy.gif")
+                msg.channel.send(embed);
             }
             
         })
@@ -239,7 +267,7 @@ client.on('message', async (msg)=>{
         var embed = new Discord.MessageEmbed()
         .setColor('#800080')
         .setTitle('You choices:')
-        .setDescription("rock, paper , scissors")
+        .setDescription("rock, paper, scissors")
         msg.reply(embed); // response to command
         msg.channel.awaitMessages(filter,{max:1, time:10000, errors:['time']}) //waits for message for 10 seconds, only 1 message allowed
         .then((collected)=>{
