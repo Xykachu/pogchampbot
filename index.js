@@ -98,7 +98,7 @@ client.on('message',async(msg)=>{
 //----------------------------------------------------------------------------------------------------------------------------
 //commands >help
 client.on('message',async(msg)=>{
-    const com = "```Pat | Pogchamp | ree | kyle | slap | pun | rps | blasty | pog | image```";
+    const com = "```Pat | Pogchamp | ree | kyle | slap | pun | rps | blasty | pog | profile| twitch |```";
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
     if(msg.content.toLowerCase() === `${prefix}help`){
