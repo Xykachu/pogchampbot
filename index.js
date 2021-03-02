@@ -2,22 +2,22 @@ const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
 const Discord= require('discord.js');
 const { CLIENT_RENEG_LIMIT } = require('tls');
 const client = new Discord.Client();
-const token ="ODE1OTcxNTA4NzM5NjM3MjU4.YD0Krw.KZBVMuRb1yAnRubNDDhgH6Z0NhM";
-const prefix =">"
+const token ="ODE1OTcxNTA4NzM5NjM3MjU4.YD0Krw.KZBVMuRb1yAnRubNDDhgH6Z0NhM"; //login token 
+const prefix =">"; // prefix
 
 
 client.on("ready", () =>{
-    console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setActivity('shrek is love, shrek is life', { type: 'PLAYING' });
+    console.log(`Logged in as ${client.user.tag}!`); //logs bots tag to console
+   client.user.setActivity('need an adult', { type: 'PLAYING' }); //sets bots discord status
    //client.user.setStatus("idle");
  });
 //login token
 client.login(token);
-const det = "```1 very pogchamp ,2 kinda pogchamp ,3 pogish ,4 not very pog ,5 unpogchamp ,6 need pat```";
 
 //----------------------------------------------------------------------------------------------------------------------------
 //pogchamp command
 client.on('message', async (msg)=>{
+    const det = "```1 very pogchamp ,2 kinda pogchamp ,3 pogish ,4 not very pog ,5 unpogchamp ,6 need pat```";
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id; //checks if users match
     if(msg.content.toLowerCase() === `${prefix}pogchamp`){ //command
@@ -92,23 +92,28 @@ client.on('message',async(msg)=>{
 //----------------------------------------------------------------------------------------------------------------------------
 //commands
 client.on('message',async(msg)=>{
+    const com = "```Pat | Pogchamp | ree | kyle | slap | pun | rps | blasty | pog```";
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
-    if(msg.content.toLowerCase() === `${prefix}commands`){
+    if(msg.content.toLowerCase() === `${prefix}help`){
         
-            msg.channel.send("Available commands are : Pat, Pogchamp, ree, kyle, slap, pun, rps, blasty, pog");
+            msg.channel.send(com);
     }
     
 });
 //----------------------------------------------------------------------------------------------------------------------------
 //triggers on ree
 client.on('message',async(msg)=>{
+    const responses = ["https://tenor.com/view/reee-kid-tantrums-gif-15375793",
+"https://tenor.com/view/ree-reee-reeee-reeeee-scree-gif-12568403",
+"https://tenor.com/view/reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-gif-15656567",
+"https://tenor.com/view/ree-pepe-triggered-angry-ahhhh-gif-13627544"];
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
     if(msg.content.toLowerCase() === `ree`){
         
             msg.channel.send("REE! " +msg.author.username);
-            msg.channel.send("https://tenor.com/view/ree-pepe-triggered-angry-ahhhh-gif-13627544");
+            msg.channel.send(responses[Math.floor(Math.random() * responses.length)]);
     }
     
 });
@@ -206,7 +211,7 @@ client.on('message',async msg=>{
 //----------------------------------------------------------------------------------------------------------------------------
 //...the pog to my champ
 client.on('message',async msg=>{
-    if(msg.content.toLowerCase().startsWith(`${prefix}pog`)){
+    if(msg.content.toLowerCase()===`${prefix}pog`){
         msg.channel.send("champ");
     }
 });
