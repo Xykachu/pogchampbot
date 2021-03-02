@@ -5,6 +5,7 @@ const { CLIENT_RENEG_LIMIT } = require('tls');
 const client = new Discord.Client();
 const token ="ODE1OTcxNTA4NzM5NjM3MjU4.YD0Krw.KZBVMuRb1yAnRubNDDhgH6Z0NhM"; //login token 
 const prefix =">"; // prefix
+
 //#endregion
 
 client.on("ready", () =>{
@@ -97,7 +98,7 @@ client.on('message',async(msg)=>{
 //----------------------------------------------------------------------------------------------------------------------------
 //commands >help
 client.on('message',async(msg)=>{
-    const com = "```Pat | Pogchamp | ree | kyle | slap | pun | rps | blasty | pog```";
+    const com = "```Pat | Pogchamp | ree | kyle | slap | pun | rps | blasty | pog | image```";
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
     if(msg.content.toLowerCase() === `${prefix}help`){
@@ -284,3 +285,87 @@ client.on('message', async (msg)=>{
     }
     
 });
+//----------------------------------------------------------------------------------------------------------------------------
+
+//twitch - > displays name, and link 
+client.on('message',async msg=>{
+    if(msg.author.bot)return;
+
+    const filter = (m) => m.author.id === msg.author.id;
+
+    if(msg.content.toLowerCase()===`${prefix}twitch`){
+
+        msg.reply("whos profile do you want to see?");
+        msg.channel.awaitMessages(filter,{max:1, time:10000, errors:['time']})
+        .then((collected)=>
+        {
+            ResponseMsg = collected.first();
+            console.log(ResponseMsg);
+        
+        const yessi="YESSI";
+            if(ResponseMsg.content.toLowerCase() === yessi.toLowerCase() ) //if yessi add saur
+            {
+                const embed = new Discord.MessageEmbed()
+                .setColor('#800080')
+                .setTitle('Twitch user:')
+                .setDescription(ResponseMsg)
+                .addField("twitch:",`https://twitch.tv/${ResponseMsg.content.toLowerCase()+"saur"}`)
+                msg.channel.send(embed);
+            }
+            
+            else //twitch + word
+            {
+                // msg.channel.send(msg.author.avatarURL());
+                const embed = new Discord.MessageEmbed()
+                 .setColor('#800080')
+                 .setTitle('Pogchamp user:')
+                 .setDescription(ResponseMsg)
+                 .addField("twitch:",`https://twitch.tv/${ResponseMsg}`)
+                 msg.channel.send(embed);
+             }
+        })
+        .catch(function(){ // if no answered, send default
+            
+            const embed = new Discord.MessageEmbed()
+             .setColor('#800080')
+             .setTitle('Pogchamp user:')
+             .setDescription(msg.author.username)
+             .addField("twitch:",`https://twitch.tv/${msg.author.username}`)
+             .setImage(msg.author.avatarURL())
+             msg.channel.send(embed);
+        }
+        );
+    }
+        
+});
+
+//----------------------------------------------------------------------------------------------------------------------------
+//profile -> displays name, twitch link and discord avatar
+client.on('message',async msg=>{
+    
+    if(msg.content.toLowerCase()===`${prefix}profile`){
+        if(msg.author.username === "Yessi" ){
+            const embed = new Discord.MessageEmbed()
+            .setColor('#f0f0f0')
+            .setTitle('Pogchamp user:')
+            .setDescription(msg.author.username)
+            .addField("twitch:",`https://twitch.tv/${msg.author.username+"saur"}`)
+            .setImage(msg.author.avatarURL())
+            msg.channel.send(embed);
+        }
+        else{
+
+        
+            // msg.channel.send(msg.author.avatarURL());
+            const embed = new Discord.MessageEmbed()
+             .setColor('#f0f0f0')
+             .setTitle('Pogchamp user:')
+             .setDescription(msg.author.username)
+             .addField("twitch:",`https://twitch.tv/${msg.author.username}`)
+             .setImage(msg.author.avatarURL())
+             msg.channel.send(embed);
+         }
+        }
+        
+});
+
