@@ -129,12 +129,29 @@ client.on('message',async(msg)=>{
 //----------------------------------------------------------------------------------------------------------------------------
 //commands >help
 client.on('message',async(msg)=>{
-    const com = "```Pat | Pogchamp | ree | kyle | slap | pun | rps | blasty | pog | profile| twitch |```";
+   // const com = "```Pat | Pogchamp | ree | kyle | slap | pun | rps | blasty | pog | profile| twitch |```";
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
     if(msg.content.toLowerCase() === `${prefix}help`){
         
-            msg.channel.send(com);
+           // msg.channel.send(com);
+
+            const embed = new Discord.MessageEmbed()
+            .setColor('#eca6ff')
+            .setTitle('Available Commands:')
+            .setDescription(`(Use ${prefix} before commands)`)
+            .addField("Pat",`>pat + @mention`)
+            .addField("Pogchamp",`>Pogchamp (asks how you are)`)
+            .addField("Ree",`ree (no prefix)`)
+            .addField("Kyle",`>kyle (deletes message after 5 seconds)`)
+            .addField("Slap",`>slap + @mention`)
+            .addField("Pun",`>pun (posts random pun)`)
+            .addField("Rps",`>rps (rock paper scissors)`)
+            .addField("Blasty",`>blasty (random blasty gif)`)
+            .addField("Pog",`>pog ..champ`)
+            .addField("Profile",`>profile (shows your profile)`)
+            .addField("Twitch",`>twitch + name (shows persons twitch link)`)
+            msg.channel.send(embed);
     }
     
 });
