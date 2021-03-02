@@ -8,8 +8,8 @@ const prefix =">"
 
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setActivity('Pogchamp!!', { type: 'PLAYING' });
-   client.user.setStatus("idle");
+   client.user.setActivity('shrek is love, shrek is life', { type: 'PLAYING' });
+   //client.user.setStatus("idle");
  });
 //login token
 client.login(token);
@@ -128,10 +128,18 @@ client.on('message', async msg => {
 //slap command
 client.on('message', async msg => {
     const taggedUser = msg.mentions.users.first();
+    const responses = [
+        "https://tenor.com/view/baka-slap-huh-angry-gif-15696850", 
+        "https://tenor.com/view/pikachu-slap-fight-mad-no-gif-16415016", 
+        "https://tenor.com/view/cat-punch-stuffed-toy-gif-16184358",
+        "https://tenor.com/view/family-guy-brian-griffin-stewie-griffin-slap-push-gif-4590339",
+        "https://tenor.com/view/slap-gif-19326818",
+        "https://tenor.com/view/slap-handa-seishuu-naru-kotoishi-barakamon-anime-barakamon-gif-5509136"
+    ];
 	if (msg.content.toLowerCase().startsWith(`${prefix}slap`) ) {
 		
 msg.reply(`slaps ${taggedUser.username} ..`)
-	msg.channel.send(`https://tenor.com/view/pikachu-slap-fight-mad-no-gif-16415016 `);
+msg.channel.send(responses[Math.floor(Math.random() * responses.length)]);
 	}
 });
 
@@ -202,6 +210,7 @@ client.on('message',async msg=>{
         msg.channel.send("champ");
     }
 });
+
 
 
 
