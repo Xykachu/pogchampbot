@@ -1,10 +1,11 @@
+//#region const
 const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
 const Discord= require('discord.js');
 const { CLIENT_RENEG_LIMIT } = require('tls');
 const client = new Discord.Client();
 const token ="ODE1OTcxNTA4NzM5NjM3MjU4.YD0Krw.KZBVMuRb1yAnRubNDDhgH6Z0NhM"; //login token 
 const prefix =">"; // prefix
-
+//#endregion
 
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`); //logs bots tag to console
@@ -14,8 +15,12 @@ client.on("ready", () =>{
 //login token
 client.login(token);
 
+
+//Im a dumbass and should have made the commands in sepereate files but i guess i cant help a small brain
+
+
 //----------------------------------------------------------------------------------------------------------------------------
-//pogchamp command
+//pogchamp command - >pogchamp -> number 1-6 
 client.on('message', async (msg)=>{
     const det = "```1 very pogchamp ,2 kinda pogchamp ,3 pogish ,4 not very pog ,5 unpogchamp ,6 need pat```";
     if(msg.author.bot)return;
@@ -69,7 +74,7 @@ client.on('message', async (msg)=>{
     
 });
 //----------------------------------------------------------------------------------------------------------------------------
-//pat command
+//pat command >pat @mention
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
@@ -90,7 +95,7 @@ client.on('message',async(msg)=>{
     
 });
 //----------------------------------------------------------------------------------------------------------------------------
-//commands
+//commands >help
 client.on('message',async(msg)=>{
     const com = "```Pat | Pogchamp | ree | kyle | slap | pun | rps | blasty | pog```";
     if(msg.author.bot)return;
@@ -102,7 +107,7 @@ client.on('message',async(msg)=>{
     
 });
 //----------------------------------------------------------------------------------------------------------------------------
-//triggers on ree
+//triggers on ree - no prefix
 client.on('message',async(msg)=>{
     const responses = ["https://tenor.com/view/reee-kid-tantrums-gif-15375793",
 "https://tenor.com/view/ree-reee-reeee-reeeee-scree-gif-12568403",
@@ -118,7 +123,7 @@ client.on('message',async(msg)=>{
     
 });
 //----------------------------------------------------------------------------------------------------------------------------
-//deletes message after 5 seconds
+//deletes message after 5 seconds (random test command)
 client.on('message', async msg => {
 	if (msg.content.toLowerCase() === `${prefix}kyle`) {
 		try {
@@ -130,7 +135,7 @@ client.on('message', async msg => {
 	}
 });
 
-//slap command
+//slap command >slap @mention
 client.on('message', async msg => {
     const taggedUser = msg.mentions.users.first();
     const responses = [
@@ -149,7 +154,7 @@ msg.channel.send(responses[Math.floor(Math.random() * responses.length)]);
 });
 
 //----------------------------------------------------------------------------------------------------------------------------
-//pun
+//pun >pun - gives random pun
 client.on('message',async(msg)=>{
     if(msg.author.bot)return;
     const filter = (m) => m.author.id === msg.author.id;
@@ -192,7 +197,7 @@ client.on('message',async(msg)=>{
 });
 
 //----------------------------------------------------------------------------------------------------------------------------
-//blasty
+//blasty >blasty -> random squirtle gif
 client.on('message',async msg=>{
     const taggedUser =msg.mentions.users.first();
     
@@ -209,7 +214,7 @@ client.on('message',async msg=>{
 });
 
 //----------------------------------------------------------------------------------------------------------------------------
-//...the pog to my champ
+//...the pog to my champ >pog - responds with champ
 client.on('message',async msg=>{
     if(msg.content.toLowerCase()===`${prefix}pog`){
         msg.channel.send("champ");
@@ -218,7 +223,7 @@ client.on('message',async msg=>{
 
 
 //----------------------------------------------------------------------------
-//ROCK-PAPER-SCISSORS
+//ROCK-PAPER-SCISSORS >rps -> rock,paper,scissors -> rng win/lose
 
 client.on('message', async (msg)=>{
     if(msg.author.bot)return;
