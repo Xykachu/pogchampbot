@@ -17,6 +17,14 @@ module.exports = {
             return message.reply('you need to tag a user in order slap them!');
             
         } 
+        else if (taggedUser.id === message.author.id){
+            const embed = new Discord.MessageEmbed()
+            .setColor('#6cf0df')
+            .setTitle(`${message.author.username} slaps themselves ..`)
+            .setImage(url=`${responses[Math.floor(Math.random() * responses.length)]}`)
+            message.channel.send(embed);
+            return;
+        }
         else{
             const embed = new Discord.MessageEmbed()
             .setColor('#6cf0df')

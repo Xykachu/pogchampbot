@@ -15,6 +15,13 @@ module.exports = {
         if (!message.mentions.users.size) {
             return message.reply('you need to tag a user in order pat them!');
         }
+        else if (taggedUser.id === message.author.id){
+            const embed = new Discord.MessageEmbed()
+            .setColor('#ec8fcc')
+            .setTitle(`${message.author.username} pats themselves ..`)
+            .setImage(url=`${responses[Math.floor(Math.random() * responses.length)]}`)
+            message.channel.send(embed);
+        }
         else{
             const embed = new Discord.MessageEmbed()
             .setColor('#ec8fcc')
@@ -22,6 +29,6 @@ module.exports = {
             .setImage(url=`${responses[Math.floor(Math.random() * responses.length)]}`)
             message.channel.send(embed);
         }
-        
+        //(taggedUser.id === message.author.id)
 	},
 };

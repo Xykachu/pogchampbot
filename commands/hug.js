@@ -21,7 +21,11 @@ module.exports = {
 
         ];
 
-        if(taggedUser ==null){
+        if (!message.mentions.users.size) {
+            return message.reply('you need to tag a user in order hug them!');
+            
+        } 
+        else if(taggedUser.id === message.author.id){
             const embed = new Discord.MessageEmbed()
             .setColor('#6cf0df')
             .setTitle(`${message.author.username} hugs..themeselves..`)
