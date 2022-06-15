@@ -12,7 +12,7 @@ module.exports = {
         let button = new disbut.MessageButton()
             .setLabel("Support")
             .setStyle("url")
-            .setURL("https://xykachu.github.io/Aniuly/")
+            .setURL("https://twitch.tv/Aniuly/")
         message.channel.send('Click here to support', button)
 
     

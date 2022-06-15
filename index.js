@@ -68,4 +68,47 @@ let embed = new Discord.MessageEmbed() //default embed to update in the foreach 
 	}
 });
 
+//add roles on join
+client.on('guildMemberAdd',guildMember =>{
+
+	var server = client.guilds.cache.get(guildMember.guild.id).id;
+	//roles
+	let followersRole = guildMember.guild.roles.cache.find(role => role.name === 'Followers');
+	let valorantRole = guildMember.guild.roles.cache.find(role => role.name === 'valorant');
+	let modsRole = guildMember.guild.roles.cache.find(role => role.name === 'Mods');
+	let vipRole = guildMember.guild.roles.cache.find(role => role.name === 'Twitch VIP');
+	let pogoRole = guildMember.guild.roles.cache.find(role => role.name === 'PokemonGo');
+	let raftRole = guildMember.guild.roles.cache.find(role => role.name === 'raft');
+	let squirtleRole = guildMember.guild.roles.cache.find(role => role.name === 'Squirtle');
+	
+	//guildMember.roles.add(followersRole);
+	if(server === "453370791141310476" ){
+		if (guildMember.id === "282540848250355712"){
+			guildMember.roles.add(valorantRole);
+			guildMember.roles.add(modsRole);
+			guildMember.roles.add(vipRole);
+			guildMember.roles.add(pogoRole);
+			guildMember.roles.add(followersRole);
+			guildMember.roles.add(raftRole);
+			guildMember.roles.add(squirtleRole);
+			console.log("blasty")
+		}
+		else {
+			guildMember.roles.add(followersRole);
+			console.log("not him")
+			
+		}
+	}
+	else {
+		guildMember.roles.add(followersRole);
+		console.log("not the server?")
+		
+	}
+	
+		
+	
+	
+		
+});
+
 client.login(token);
