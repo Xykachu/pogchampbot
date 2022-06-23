@@ -109,4 +109,4 @@ client.on('guildMemberAdd',guildMember =>{
 		
 });
 
-client.login(token);
+client.login(process.env.token);
