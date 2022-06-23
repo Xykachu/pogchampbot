@@ -1,10 +1,11 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token ,why_dad_left} = require('./config.json');
-const client = new Discord.Client();
+//const client = new Discord.Client();
 const { S_IFDIR } = require('constants');
-client.commands = new Discord.Collection();
 
+const client = new Discord.Client({ intents:["GUILDS","GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_MESSAGE_REACTIONS"]},{partials:["USER","REACTION","MESSAGE","CHANNEL","GUILD_MEMBER"]});
+client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 //reads files in command folder
@@ -17,6 +18,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
 	console.log(`${client.user.tag} has logged in`);
+
 });
 
 
@@ -61,7 +63,7 @@ let embed = new Discord.MessageEmbed() //default embed to update in the foreach 
 	const command = client.commands.get(commandName); 
 
 	try {
-		command.execute(message, args); //try to execute
+		command.execute(message, args,client); //try to execute
 	} catch (error) {
 		console.error(error);
 		message.reply('there was an error trying to execute that command!'); //sends reply and tags user. // message.send to not tag.
@@ -104,10 +106,6 @@ client.on('guildMemberAdd',guildMember =>{
 		console.log("not the server?")
 		
 	}
-	
-		
-	
-	
 		
 });
 
