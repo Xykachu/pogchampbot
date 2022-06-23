@@ -22,25 +22,30 @@ module.exports={
         const amongusEmoji = '👹';
         const valorantEmoji = '🎮';
 
+if(message.user.id === '256164532781580289'){
+    const embed = new Discord.MessageEmbed()
+    .setColor('#e42643')
+    .setTitle('Choose all the roles u want')
+    .setDescription('Click on a reaction to get a role, unreact to remove it\n\n'
+    + `${modsEmoji} for Mods role\n`
+    + `${minecraftEmoji} for Minecraft role\n`
+    + `${raftEmoji} for Raft role\n`
+    + `${pokemonGoEmoji} for Pokemon role\n`
+    + `${amongusEmoji} for Among us role\n`
+    + `${valorantEmoji} for Valorant role`);
 
-        const embed = new Discord.MessageEmbed()
-        .setColor('#e42643')
-        .setTitle('Choose all the roles u want')
-        .setDescription('Click on a reaction to get a role, unreact to remove it\n\n'
-        + `${modsEmoji} for Mods role\n`
-        + `${minecraftEmoji} for Minecraft role\n`
-        + `${raftEmoji} for Raft role\n`
-        + `${pokemonGoEmoji} for Pokemon role\n`
-        + `${amongusEmoji} for Among us role\n`
-        + `${valorantEmoji} for Valorant role`);
-
-        let messageEmbed = await message.channel.send(embed);
-        messageEmbed.react(modsEmoji);
-        messageEmbed.react(minecraftEmoji);
-        messageEmbed.react(raftEmoji);
-        messageEmbed.react(pokemonGoEmoji);
-        messageEmbed.react(amongusEmoji);
-        messageEmbed.react(valorantEmoji);
+    let messageEmbed = await message.channel.send(embed);
+    messageEmbed.react(modsEmoji);
+    messageEmbed.react(minecraftEmoji);
+    messageEmbed.react(raftEmoji);
+    messageEmbed.react(pokemonGoEmoji);
+    messageEmbed.react(amongusEmoji);
+    messageEmbed.react(valorantEmoji);
+}
+else{
+    message.channel.send("sorry, you cannot use this command");
+}
+       
 
          //works up to here
 
