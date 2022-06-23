@@ -22,7 +22,7 @@ module.exports={
         const amongusEmoji = '👹';
         const valorantEmoji = '🎮';
 
-if(message.user.id === '256164532781580289'){
+if(message.author.id === '256164532781580289'){
     const embed = new Discord.MessageEmbed()
     .setColor('#e42643')
     .setTitle('Choose all the roles u want')
