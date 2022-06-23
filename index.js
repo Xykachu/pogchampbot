@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const { prefix, token ,why_dad_left} = require('./config.json');
 //const client = new Discord.Client();
 const { S_IFDIR } = require('constants');
+//const token1 = process.env.token
 
 const client = new Discord.Client({ intents:["GUILDS","GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_MESSAGE_REACTIONS"]},{partials:["USER","REACTION","MESSAGE","CHANNEL","GUILD_MEMBER"]});
 client.commands = new Discord.Collection();
@@ -20,6 +21,7 @@ client.once('ready', () => {
 	console.log(`${client.user.tag} has logged in`);
 
 });
+
 
 
 //array from commands collection by keys only
