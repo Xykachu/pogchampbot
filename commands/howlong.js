@@ -13,7 +13,7 @@ module.exports = {
 
             const embed = new Discord.MessageEmbed()
             .setColor('#ec8fcc')
-            .setTitle(`${message.author.username} it has been ${daysGone} since dad left `)
+            .setTitle(`${message.author.username} it has been ${daysGone} days since dad left `)
             .setImage(url=`${responses[Math.floor(Math.random() * responses.length)]}`)
             message.channel.send(embed);
         
